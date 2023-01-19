@@ -3,5 +3,14 @@
 @tailwind utilities;
 
 html {
-  @apply bg-gray-700;
+  @apply bg-[url('assets/background.jpg')];
+  /* background-size: contain; */
+  background-position: center;
+}
+img {
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
