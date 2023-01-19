@@ -2,20 +2,21 @@ import { useEffect, useState } from "react";
 import Card from "./components/Card";
 import Logo from "./components/Logo";
 //https://db.ygoprodeck.com/api/v7/cardinfo.php?name=Decode%20Talker
+//https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=Magician
 function App() {
-  const [searchTerm, setSearchTerm] = useState<string>("Decode%20Talker");
+  const [searchTerm, setSearchTerm] = useState<string>("Magician");
   const [cards, setCards] = useState<any>([]);
-  const apiUrl = `https://db.ygoprodeck.com/api/v7/cardinfo.php?name=${searchTerm}`;
+  const apiUrl = `https://db.ygoprodeck.com/api/v7/cardinfo.php?&fname=${searchTerm}`;
 
   const searchCards = async () => {
     const response = await fetch(apiUrl);
     const data = await response.json();
-    setCards(data);
+    //limits to 5 items
+    setCards(data.data.slice(0, 6));
   };
 
   useEffect(() => {
     searchCards();
-    console.log(cards);
   }, []);
 
   return (
@@ -30,16 +31,17 @@ function App() {
           onChange={(e) => setSearchTerm(e.target.value)}
         />
       </div>
-      <div>
+      {/* <div>
         <p>{searchTerm}</p>
-      </div>
+      </div> */}
       <div>
         {cards.length > 0 ? (
-          <div>
-            <h2>cards</h2>
-            {cards.map((item: any) => (
-              <Card card={item} key={""} />
+          <div className="grid grid-cols-3 gap-4 p-4">
+            {/* <h2>Search Results</h2> */}
+            {cards.map((card: any) => (
+              <Card card={card} key={card.id} />
             ))}
+            {/* console.log(card.id) */}
           </div>
         ) : (
           <h3>no results found</h3>
