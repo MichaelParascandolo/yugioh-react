@@ -18,7 +18,7 @@ function App() {
         const response = await fetch(apiUrl);
         const data = await response.json();
         //limits to 5 items
-        setCards(data.data.slice(0, 6));
+        setCards(data.data.slice(0, 11));
       } catch (error) {
         console.log(error);
         setMessage("No Results Found");
@@ -26,9 +26,9 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    searchCards();
-  }, []);
+  // useEffect(() => {
+  //   searchCards();
+  // }, []);
 
   return (
     <>
