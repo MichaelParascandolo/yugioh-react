@@ -1,11 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Explora&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 html {
-  @apply bg-[url('assets/background.jpg')];
+  /* @apply bg-[url('assets/background.jpg')];
+   */
   /* background-size: contain; */
-  background-position: center;
+  /* background-position: center; */
+  @apply bg-slate-300;
 }
 img {
   -webkit-user-drag: none;
